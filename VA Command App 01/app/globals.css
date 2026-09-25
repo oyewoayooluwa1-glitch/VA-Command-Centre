@@ -1,0 +1,128 @@
+/*
+  VA Command Center — design tokens
+  Derived from the logo, which is pure black (#000) and white (#FFF) only.
+  So the interface is black-and-white first, with ONE accent ("brand") used
+  sparingly for focus, links, selected states and the main chart series.
+  Change the accent by editing --brand / --brand-soft / --brand-on-dark only.
+
+  Variable names follow shadcn/ui so components pick these up automatically.
+  Font: Hanken Grotesk (load with next/font/google, weights 400-700).
+*/
+
+:root {
+  /* brand */
+  --ink: #000000;
+  --paper: #ffffff;
+  --brand: #2f45ff;          /* 6.2:1 on white */
+  --brand-soft: #eceeff;     /* selected rows, subtle highlights */
+  --brand-on-dark: #8b99ff;  /* 8.1:1 on black */
+
+  /* surfaces (light) */
+  --canvas: #f5f5f6;
+  --raised: #ffffff;
+  --line: #e4e4e7;
+  --text: #000000;
+  --text-2: #3f3f46;         /* 10.4:1 */
+  --text-3: #6b6b76;         /* 5.3:1 on white, 4.8:1 on canvas */
+
+  /* status */
+  --success: #0b7a4b;
+  --warning: #9a5b00;
+  --danger: #c62a1e;
+
+  /* sidebar is black in BOTH themes: it is the logo's own field */
+  --sidebar: #000000;
+  --sidebar-text: #a1a1aa;
+  --sidebar-text-active: #ffffff;
+  --sidebar-hover: #151517;
+  --sidebar-line: #26262b;
+
+  /* shadcn/ui mapping */
+  --background: var(--canvas);
+  --foreground: var(--text);
+  --card: var(--raised);
+  --card-foreground: var(--text);
+  --popover: var(--raised);
+  --popover-foreground: var(--text);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: #efeff1;
+  --secondary-foreground: var(--text);
+  --muted: #efeff1;
+  --muted-foreground: var(--text-3);
+  --accent: #efeff1;
+  --accent-foreground: var(--text);
+  --destructive: var(--danger);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--brand);
+  --radius: 0.5rem;          /* buttons, inputs; cards use 0.625rem, tiles 22.5% */
+
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.dark {
+  --canvas: #000000;         /* true black, like the logo field */
+  --raised: #111113;         /* cards need lift to read against black */
+  --line: #26262b;
+  --text: #f5f5f5;
+  --text-2: #d4d4d8;
+  --text-3: #a1a1aa;         /* 7.4:1 on raised */
+
+  --brand: var(--brand-on-dark);
+  --brand-soft: #14163a;
+
+  --success: #3ddc97;
+  --warning: #f5b544;
+  --danger: #ff7a6e;
+
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #1a1a1d;
+  --muted: #1a1a1d;
+  --accent: #1a1a1d;
+}
+
+/* Money and dates: tabular figures so columns line up. */
+.num { font-variant-numeric: tabular-nums; }
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-canvas: var(--canvas);
+  --color-raised: var(--raised);
+  --color-line: var(--line);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-sans);
+}
+
+/* Minimal reset + defaults for the deployment-test pages.
+   The real app will use Tailwind + shadcn/ui on top of these tokens. */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+.wrap { max-width: 420px; margin: 0 auto; padding: 64px 20px; }
+.card {
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+input {
+  width: 100%; font: inherit; color: var(--text);
+  background: var(--canvas); border: 1px solid var(--line);
+  border-radius: 8px; padding: 10px 12px; margin-bottom: 14px;
+}
+button {
+  width: 100%; font: 600 14px var(--font-sans);
+  background: var(--primary); color: var(--primary-foreground);
+  border: 0; border-radius: 8px; padding: 11px; cursor: pointer;
+}
+.error { color: var(--danger); font-size: 14px; margin-bottom: 14px; }
