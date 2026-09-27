@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "va-command-center",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  }
+  // When the admin panel needs direct SQL (bypassing RLS with the service role),
+  // add a Hyperdrive binding here and connect it to the same Supabase database:
+  // "hyperdrive": [{ "binding": "HYPERDRIVE", "id": "<created-with-wrangler>" }]
+}
