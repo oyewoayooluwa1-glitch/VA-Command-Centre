@@ -1,5 +1,5 @@
 import { createAdminClient } from "@/lib/supabase/admin";
-
+   export const runtime = "nodejs";
 
 // Web Crypto, not Node's crypto module — portable on Cloudflare Workers
 // without relying on nodejs_compat covering every crypto API.
